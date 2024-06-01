@@ -1,0 +1,24 @@
+{
+  "name": "social-network-api-practice",
+  "version": "1.0.0",
+  "description": "Sample \"Social Network\" API route example practice in Back-End/Node.js, using Express.js and Mongoose packages, with MongoDB and JavaScript.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.1"
+  }
+}

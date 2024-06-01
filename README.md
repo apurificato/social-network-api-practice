@@ -6,6 +6,8 @@ Node.js application that uses npm packages for Express.js, Mongoose, and Dotenv 
 ## Description
 This back-end e-commerce application was built from scratch with Javascript. The application uses the Mongoose npm to interact and build out a MongoDB database through JavaScript controller files, api routes, and models. Since this faux "social media" database is back-end only and utilizes Node.js, it runs shell scripted commands in the terminal in order to connect to MongoDB and then a server is started locally to then test and manipulate data on that database. All of this enables the user to connect to the database and go through the CRUD (Create, Read, Update, and Delete) Process via server routes and Models that have been coded with JavaScript. The Insomnia.Rest platform was used to test each one of the server routes and carry out the entire CRUD process successfully with every step.
 
+<img width="1440" alt="Social-media-app-api-routes-practice-screenshot" src="https://github.com/apurificato/social-network-api-practice/assets/161912493/8ba07707-3f40-4741-8f91-c87105e0a2c7">
+
 ## Project Structure
 - /config
     - client.js (file containing code that enables a MongoDB database connection)

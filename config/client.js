@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(`mongodb://127.0.0.1:27017/${process.env.DB_NAME}`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true
-});
+mongoose.connect(`mongodb://127.0.0.1:27017/${process.env.DB_NAME}`);
 
 const connection = mongoose.connection;
 
@@ -18,3 +13,5 @@ connection.once('open', () => {
 });
 
 module.exports = connection;
+
+// ${process.env.DB_NAME}

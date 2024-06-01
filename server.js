@@ -7,39 +7,37 @@ const dotenv = require('dotenv');
 // Load environment variables from .env file
 dotenv.config();
 
-// Import routes
-const routes = require('./routes');
-
 // Create Express app
 const app = express();
 const PORT = process.env.PORT || 6969;
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true
-}).then(() => {
-  console.log('Connected to MongoDB');
-}).catch((error) => {
-  console.error('Error connecting to MongoDB:', error);
-  process.exit(1); // Exit the process if unable to connect to MongoDB
-});
-
-// Set up session middleware
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true,
-  store: MongoStore.create({
-    client: mongoose.connection.getClient()
-  })
-}));
-
 // Middleware
 app.use(express.json());
 app.use(express.static('public'));
+
+mongoose.connect(process.env.MONGODB_URI, {
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true
+  }).then(() => {
+    console.log('Connected to MongoDB');
+  }).catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+    process.exit(1); // Exit the process if unable to connect to MongoDB
+  });
+
+// Set up session middleware
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+      client: mongoose.connection, // Use Mongoose connection directly
+      mongoUrl: process.env.MONGODB_URI // Specify MongoDB URL
+    })
+  }));
+
+// Import routes
+const routes = require('./routes');
 
 // Routes
 app.use('/api', routes);
